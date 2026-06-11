@@ -1,0 +1,11 @@
+[package]
+name = "typtest"
+version = "0.0.1"
+entrypoint = "lib.typ"
+authors = ["Ryan Tsang"]
+description = "components for tests and exams"
+repository = "https://github.com/rchtsang/typtest"
+compiler = "0.14.0"
+categories = ["components", "layout"]
+tags = ["tests", "exams", "quiz", "paged"]
+
