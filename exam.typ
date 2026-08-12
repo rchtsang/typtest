@@ -20,7 +20,7 @@
       doc: "course title"),
     e.field("title", content, named: true,
       doc: "exam title"),
-    e.field("problems", e.types.array(content), named: true,
+    e.field("problems", e.types.array(base.problem), named: true,
       doc: "exam problems"),
     e.field("instructions", content, required: true,
       doc: "exam instructions"),

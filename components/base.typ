@@ -56,14 +56,14 @@
       #it.main
 
       #for (i, subpart) in it.subparts.enumerate() {
-        block(breakable: it.show-solution)[
+        block(breakable: it.breakable)[
           #if subpart.points > 0.0 [
             #if subpart.numbering != none [#numbering(subpart.numbering, i+1)]
             (_#subpart.points points_) #subpart.prompt \
           ] else [
             #subpart.prompt \
           ]
-          #if sol and subpart.points > 0.0 {
+          #if it.show-solution and subpart.points > 0.0 {
             text(fill: it.solution-color)[
               *Solution*: \
               #subpart.solution \
