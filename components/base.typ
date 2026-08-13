@@ -45,7 +45,7 @@
     it
   },
   count: counter => counter.step(),
-  display: it => {
+  display: it => e.get(get => context {
     block(breakable: it.breakable)[
       #if it.points > 0.0 [
         == (_#it.points points_) #it.title
@@ -79,5 +79,5 @@
         }
       }
     ]
-  },
+  }),
 )

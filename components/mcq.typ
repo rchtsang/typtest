@@ -32,36 +32,36 @@
 }
 
 // returns choices as layout
-#let layout-choices(question) = {
-  let args = if question.layout == "v" {
+#let layout-choices(choices, layout) = {
+  let args = if layout == "v" {
     // return enum(numbering: numbering, ..question.choices)
     arguments(
       columns: (1fr,),
       row-gutter: 0.5em,
       column-gutter: 2em,
     )
-  } else if question.layout == "h" {
+  } else if layout == "h" {
     arguments(
-      columns: (1fr,) * question.choices.len(),
+      columns: (1fr,) * choices.len(),
       gutter: 2em,
     )
   } else {
     // layout is number of columns as a string
     arguments(
-      columns: (1fr,) * int(question.layout),
+      columns: (1fr,) * int(layout),
       gutter: 2em,
     )
   }
-  let choices = ()
-  for (i, choice) in question.choices.enumerate() {
-    choices.push(grid(
+  let numbered-choices = ()
+  for (i, choice) in choices.enumerate() {
+    numbered-choices.push(grid(
       columns: 2,
       gutter: 1em,
       align: horizon,
       [#std.numbering(bubble-letters, i)], [#choice],
     ))
   }
-  return grid(..args, ..choices)
+  return grid(..args, ..numbered-choices)
 }
 
 // layout multiple choice problem
@@ -95,7 +95,7 @@
       prompt: [
         #question.prompt
 
-        #layout-choices(question)
+        #layout-choices(choices, question.layout)
       ],
       solution: [*#std.numbering("A", (correct + 1))* \ ],
     ))

@@ -26,7 +26,7 @@
     e.field("instructions", content, required: true,
       doc: "exam instructions"),
   ),
-  display: it => {
+  display: it => context {
     set page(
       paper: "us-letter",
       margin: (x: 1in, y: 1in),
@@ -57,10 +57,11 @@
       let args = ()
       let total = 0
       for problem in it.problems {
-        let fields = e.fields(problem)
-        args.push(fields.title)
-        args.push(str(fields.points))
-        total += fields.points
+        let title = e.get(problem, "title")
+        let points = e.get(problem, "points")
+        args.push(title)
+        args.push(points)
+        total += points
       }
       set text(size: 14pt)
       table(
