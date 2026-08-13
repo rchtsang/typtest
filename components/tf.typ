@@ -8,19 +8,19 @@
   "question",
   prefix: "@preview/typtest:0.0.1:tf",
   fields: (
-    e.field("prompt", e.types.union(str, content), named: true,
+    e.field("prompt", e.types.union(str, content), named: true, required: true,
       doc: "true/false question prompt"),
-    e.field("solution", str, named: true,
+    e.field("solution", str, named: true, required: true,
       doc: "solution"),
   ),
 )
 
 // layout true/false problem
 #let problem(
-  id,
-  title,
-  questions,
-  points,
+  id: none,
+  title: none,
+  questions: (),
+  points: 1.0,
   numbering: "1. ",
   show-solution: false,
   solution-color: red,

@@ -1,7 +1,7 @@
 #import "exam.typ": exam
 #import "quiz.typ": quiz
-#import "types/base.typ"
-#import "types/frq.typ"
-#import "types/mcq.typ"
-#import "types/tf.typ"
+#import "components/base.typ"
+#import "components/frq.typ"
+#import "components/mcq.typ"
+#import "components/tf.typ"
 
