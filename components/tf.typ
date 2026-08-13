@@ -22,8 +22,8 @@
   questions: (),
   points: 1.0,
   numbering: "1. ",
-  show-solution: false,
-  solution-color: red,
+  show-solution: none,
+  solution-color: none,
 ) = {
   let subparts = ()
   for question in questions {
@@ -46,11 +46,11 @@
     id: id,
     title: title,
     breakable: true,
-    show-solution: show-solution,
-    solution-color: solution-color,
     main: [
       Indicate whether the following statements are true or false by circling the corresponding option:
     ],
     subparts: subparts,
+    ..if show-solution != none { (show-solution: show-solution) },
+    ..if solution-color != none { (solution-color: solution-color) },
   )
 }

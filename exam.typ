@@ -57,10 +57,12 @@
       let args = ()
       let total = 0
       for problem in it.problems {
-        let title = e.get(problem, "title")
-        let points = e.get(problem, "points")
-        args.push(title)
-        args.push(points)
+        let fields = e.fields(problem)
+        let points = fields.subparts.fold(0.0, (acc, subpart) => {
+          acc + subpart.points
+        })
+        args.push([#fields.title])
+        args.push([#points])
         total += points
       }
       set text(size: 14pt)
@@ -115,7 +117,7 @@
       #show: e.set_(base.problem, show-solution: it.show-solution)
       #titlepage
 
-      #for problem in problems [
+      #for problem in it.problems [
         #pagebreak()
         #problem
       ]

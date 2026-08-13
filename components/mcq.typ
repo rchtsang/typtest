@@ -72,8 +72,8 @@
   questions: (),
   points: 2.0,
   numbering: "1. ",
-  show-solution: false,
-  solution-color: red,
+  show-solution: none,
+  solution-color: none,
 ) = {
   let rng = gen-rng(seed)
   let subparts = ()
@@ -105,9 +105,9 @@
     id: id,
     title: title,
     breakable: true,
-    show-solution: show-solution,
-    solution-color: red,
     main: [Complete the following multiple choice questions: ],
     subparts: subparts,
+    ..if show-solution != none { (show-solution: show-solution) },
+    ..if solution-color != none { (solution-color: solution-color) },
   )
 }
