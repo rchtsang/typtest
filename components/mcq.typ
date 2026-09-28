@@ -43,13 +43,13 @@
   } else if layout == "h" {
     arguments(
       columns: (1fr,) * choices.len(),
-      gutter: 2em,
+      gutter: 1em,
     )
   } else {
     // layout is number of columns as a string
     arguments(
       columns: (1fr,) * int(layout),
-      gutter: 2em,
+      gutter: 1em,
     )
   }
   let numbered-choices = ()
@@ -104,7 +104,7 @@
   base.problem(
     id: id,
     title: title,
-    breakable: true,
+    breakable: false,
     main: [Complete the following multiple choice questions: ],
     subparts: subparts,
     ..if show-solution != none { (show-solution: show-solution) },

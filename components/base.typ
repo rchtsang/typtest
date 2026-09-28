@@ -46,7 +46,7 @@
   },
   count: counter => counter.step(),
   display: it => e.get(get => context {
-    block(breakable: it.breakable)[
+    block(breakable: true)[
       #if it.points > 0.0 [
         == (_#it.points points_) #it.title
       ] else [
@@ -55,7 +55,8 @@
 
       #it.main
 
-      #for (i, subpart) in it.subparts.enumerate() {
+      #let i = 0
+      #for subpart in it.subparts {
         let subpart-content = block(breakable: it.breakable)[
           #if subpart.points > 0.0 [
             (_#subpart.points points_) #subpart.prompt
@@ -70,9 +71,10 @@
           } else { v(subpart.space) }
         ]
         if subpart.numbering != none {
+          i += 1
           enum(
             numbering: subpart.numbering,
-            enum.item(i+1, subpart-content),
+            enum.item(i, subpart-content),
           )
         } else {
           subpart-content
